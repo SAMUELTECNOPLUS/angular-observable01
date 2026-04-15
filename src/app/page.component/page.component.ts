@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { usuarios } from '../common/page.interface';
 
 
-
 @Component({
   selector: 'page-ss',
   imports: [CommonModule],
@@ -17,15 +16,19 @@ export class PageComponent implements usuarios, OnInit {
   name: string = '';
   email: string = '';
 
-
-  users: usuarios[] = [];
+  public users: usuarios[] = [];
 
   constructor(private servicio: PageService) { }
 
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.cargarUsuarios();
+  }
+
+
+  cargarUsuarios() {
     const observe = {
-      next: (data: any) => {
+      next: (data: usuarios[]) => {
         console.log("Datos Recibidos", data)
         this.users = data;
       },

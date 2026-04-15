@@ -3,18 +3,20 @@
         @for (user of users; track user.id) {
         <article>
             <header>
-                <strong>{{ user.name }}</strong>
+                <h3 style="margin-bottom: 0;">{{ user.name }}</h3>
             </header>
 
-            <p>ID de usuario: {{ user.id }}</p>
+            <p><strong>ID:</strong> {{ user.id }}</p>
 
             <footer>
-                <small>{{ user.email }}</small>
+                <a [href]="'mailto:' + user.email">
+                    <small>{{ user.email }}</small>
+                </a>
             </footer>
         </article>
         } @empty {
-        <article>
-            <p>No se encontraron usuarios.</p>
+        <article style="text-align: center;">
+            <p>No se encontraron usuarios registrados.</p>
         </article>
         }
     </section>
