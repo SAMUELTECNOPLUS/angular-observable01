@@ -1,0 +1,21 @@
+<main class="container">
+    <section class="grid">
+        @for (user of users; track user.id) {
+        <article>
+            <header>
+                <strong>{{ user.name }}</strong>
+            </header>
+
+            <p>ID de usuario: {{ user.id }}</p>
+
+            <footer>
+                <small>{{ user.email }}</small>
+            </footer>
+        </article>
+        } @empty {
+        <article>
+            <p>No se encontraron usuarios.</p>
+        </article>
+        }
+    </section>
+</main>
